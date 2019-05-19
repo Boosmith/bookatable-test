@@ -22,5 +22,5 @@
 
 ### Testing ###
  To test use Postman or your favourite API test tool. 
- An example test url is http://localhost:3001/search?q=wel which will return all names with `lastName` starting with `griff`.
+ An example test url is http://localhost:3001/search?q=wel which will return all names with `lastName` starting with `wel`.
 
