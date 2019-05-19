@@ -12,8 +12,8 @@ const getSearchResults = async searchQuery => {
       });
       for await (const line of rl) {
         if (line.toLowerCase().indexOf(searchQuery) > -1) {
-          searchResults.push(line);
-          console.log(line);
+          dataObj = line.split(',')
+          searchResults.push(dataObj);
         }
       }
       console.log(`Search results = ${searchResults}`);
