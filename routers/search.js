@@ -4,8 +4,8 @@ const fs = require("fs");
 const searchController = require("../controllers/searchController");
 
 const search =  function() {
-  router.route("/").get(function(req, res) {
-    const searchResults = searchController(req.query.q);
+  router.route("/").get(async function(req, res) {
+    const searchResults = await searchController(req.query.q);
     res.send(searchResults);
   });
   return router;

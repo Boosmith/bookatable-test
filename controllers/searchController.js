@@ -11,11 +11,13 @@ const getSearchResults = async searchQuery => {
         crlfDelay: Infinity
       });
       for await (const line of rl) {
-        if (line.indexOf(searchQuery) > -1) {
+        if (line.toLowerCase().indexOf(searchQuery) > -1) {
           searchResults.push(line);
           console.log(line);
         }
       }
+      console.log(`Search results = ${searchResults}`);
+
       return JSON.stringify(searchResults);
     }
     return JSON.stringify({});
