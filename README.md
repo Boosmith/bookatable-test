@@ -3,7 +3,7 @@
 ### Summary ###
 
 * Solution for Bookatable test.
-* Version v0.2.0
+* Version v0.2.1
 
 ### Set up ###
 
