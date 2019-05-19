@@ -8,6 +8,6 @@ app.use("/search", search);
 app.listen(port, () => {
   const datetime = new Date();
   const message =
-    "Server running on Port:- " + port + "Started at :- " + datetime;
+    "Server running on Port:- " + port + " Started at :- " + datetime;
   console.log(message);
 });
