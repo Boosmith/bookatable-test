@@ -4,6 +4,8 @@
   "description": "Bookatable recruitment test.",
   "main": "server.js",
   "scripts": {
+    "lint": "eslint ./.",
+    "start-dev": "nodemon ./bin/www --exec 'npm run lint && node'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Andy Smith",
@@ -11,17 +13,21 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "csvtojson": "^2.0.8",
-    "express": "^4.17.0"
+    "express": "^4.17.0",
+    "http-errors": "latest"
   },
   "devDependencies": {
+    "debug": "^4.1.1",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.1",
     "prettier": "^1.17.1"
   }
 }

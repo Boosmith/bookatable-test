@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const fs = require("fs");
 const searchController = require("../controllers/searchController");
 
-const search =  function() {
-  router.route("/").get(async function(req, res) {
+const search = function() {
+  router.get("/users", async (req, res) => {
+    console.log(req.query.q);
     const searchResults = await searchController(req.query.q);
     res.send(searchResults);
   });
