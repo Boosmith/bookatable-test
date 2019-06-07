@@ -3,7 +3,7 @@ const router = express.Router();
 const fs = require("fs");
 const searchController = require("../controllers/searchController");
 
-const search =  function() {
+const search = function() {
   router.route("/").get(async (req, res) => {
     const searchResults = await searchController(req.query.q);
     res.send(searchResults);
