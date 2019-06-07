@@ -13,7 +13,8 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "csvtojson": "^2.0.8",
-    "express": "^4.17.0"
+    "express": "^4.17.0",
+    "http-errors": "latest"
   },
   "devDependencies": {
     "debug": "^4.1.1",

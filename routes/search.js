@@ -3,7 +3,8 @@ const router = express.Router();
 const searchController = require("../controllers/searchController");
 
 const search = function() {
-  router.route("/").get(async (req, res) => {
+  router.get("/users", async (req, res) => {
+    console.log(req.query.q);
     const searchResults = await searchController(req.query.q);
     res.send(searchResults);
   });
