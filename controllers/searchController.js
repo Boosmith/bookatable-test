@@ -21,8 +21,11 @@ const getSearchResults = async searchQuery => {
         crlfDelay: Infinity
       });
       for await (const line of rl) {
-        dataObj = line.split(",");
-        if ((dataObj[1].substr(0, searchQuery.length)).toLowerCase() === searchQuery.toLowerCase()) {
+        let dataObj = line.split(",");
+        if (
+          dataObj[1].substr(0, searchQuery.length).toLowerCase() ===
+          searchQuery.toLowerCase()
+        ) {
           const result = {};
           for (let i = 0; i <= dataObj.length; i++) {
             result[headers[i]] = dataObj[i];
