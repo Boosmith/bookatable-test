@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = process.env.port || 3001;
-const search = require("./routers/search")();
+const search = require("./routes/search")();
 
 app.use("/search", search);
 
