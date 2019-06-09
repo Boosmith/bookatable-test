@@ -12,7 +12,7 @@
 1. Clone the repo.
 2. Then `$ cd express-search`
 3. **Dependencies**.  
-    Ensure version of Node is latest. Should be `v11.0` or higher. This is because the version of
+   Ensure version of Node is latest. Should be `v11.0` or higher. This is because the version of
    package `readline` has dependencies on `v11.0` or higher.
    The version I developed in was `v12.2.0`.
 
