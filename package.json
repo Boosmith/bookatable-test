@@ -15,7 +15,8 @@
     "body-parser": "^1.0",
     "csvtojson": "^2.0.8",
     "express": "^4.17.1",
-    "http-errors": "latest"
+    "http-errors": "latest",
+    "mongoose": "^5.5.15"
   },
   "devDependencies": {
     "debug": "^4.1.1",
