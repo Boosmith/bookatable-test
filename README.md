@@ -1,4 +1,4 @@
-# Bookatable Node.js API test solution
+# Express REST API
 
 ### Summary
 
