@@ -1,7 +1,7 @@
 {
-  "name": "bookatable-test",
+  "name": "api-express-mongo",
   "version": "0.1.0",
-  "description": "Bookatable recruitment test.",
+  "description": "Example API using Express and MongoDB.",
   "main": "server.js",
   "scripts": {
     "lint": "eslint ./.",
