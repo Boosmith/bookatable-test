@@ -1,7 +1,7 @@
 import User from "./userModel";
 
 export default {
-  params: function(req, res, next, id) {
+  params: (req, res, next, id) => {
     User.findById(id).then(
       function(user) {
         if (!user) {
@@ -17,7 +17,7 @@ export default {
     );
   },
 
-  get: function(req, res, next) {
+  get: (req, res, next) => {
     User.find({}).then(
       function(users) {
         res.json(
@@ -32,7 +32,7 @@ export default {
     );
   },
 
-  getOne: function(req, res) {
+  getOne: (req, res) => {
     const user = req.user.toJson();
     res.json(user);
   }

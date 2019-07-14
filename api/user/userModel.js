@@ -8,12 +8,12 @@ const userSchema = new db.Schema({
   postcode: { type: String, required: true }
 });
 
-userSchema.virtual("name").get(function() {
+userSchema.virtual("name").get(() => {
   return this.lastName + ", " + this.firstName;
 });
 
 userSchema.methods = {
-  toJson: function() {
+  toJson: () => {
     const obj = this.toObject();
     return obj;
   }
