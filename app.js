@@ -1,8 +1,7 @@
 const createError = require("http-errors");
 const express = require("express");
 const logger = require("morgan");
-
-const searchRouter = require("./api/search/search")();
+const api = require("./api");
 
 const app = express();
 
@@ -10,7 +9,7 @@ app.use(logger(process.env.REQUEST_LOG_FORMAT || "dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/search", searchRouter);
+app.use("/api", api);
 
 app.use(function(req, res, next) {
   next(createError(404));
