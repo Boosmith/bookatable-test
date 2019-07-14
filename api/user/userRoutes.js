@@ -1,17 +1,15 @@
-const router = require("express").Router();
-const controller = require("./userController");
+import { Router } from "express";
+import controller from "./userController";
 
-router.param("id", controller.params);
+Router.param("id", controller.params);
 
-router
-  .route("/")
+Router.route("/")
   .get(controller.get)
   .post(controller.post);
 
-router
-  .route("/:id")
+Router.route("/:id")
   .get(controller.getOne)
   .put(controller.put)
   .delete(controller.delete);
 
-module.exports = router;
+export default Router;

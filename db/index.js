@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const url = "mongodb://localhost:27017/shop";
 
@@ -14,4 +14,4 @@ mongoose
   .then();
 
 const db = mongoose.connection;
-module.exports = db;
+export default db;

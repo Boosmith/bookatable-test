@@ -1,4 +1,4 @@
-const { db } = require("../../db");
+import db from "../../db";
 
 const userSchema = new db.Schema({
   firstName: { type: String, required: true },
@@ -19,4 +19,4 @@ userSchema.methods = {
   }
 };
 
-module.exports = db.model("User", userSchema);
+export default db.model("User", userSchema);

@@ -1,7 +1,7 @@
-const createError = require("http-errors");
-const express = require("express");
-const logger = require("morgan");
-const api = require("./api");
+import createError from "http-errors";
+import express from "express";
+import logger from "morgan";
+import api from "./api";
 
 const app = express();
 
@@ -25,4 +25,4 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
 });
 
-module.exports = app;
+export default app;

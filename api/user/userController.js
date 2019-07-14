@@ -1,6 +1,6 @@
-const User = require("./userModel");
+import User from "./userModel";
 
-module.exports = {
+export default {
   params: function(req, res, next, id) {
     User.findById(id).then(
       function(user) {
