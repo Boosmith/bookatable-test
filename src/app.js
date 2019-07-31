@@ -1,8 +1,8 @@
 import createError from "http-errors";
 import express from "express";
 import logger from "morgan";
-import api from "./src/api";
-import search from "./src/search";
+import api from "./api";
+import search from "./search";
 
 const app = express();
 
