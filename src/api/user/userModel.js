@@ -1,6 +1,7 @@
 import db from "../../db";
+import mongoose from "mongoose";
 
-const userSchema = new db.Schema({
+const userSchema = mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   address: { type: String, required: true },

@@ -1,6 +1,8 @@
 import userRoutes from "./user/userRoutes";
-import { Router } from "express";
+import express from "express";
 
-Router.use("/users", userRoutes);
+const router = express.Router();
 
-module.exports = Router;
+router.use("/users", userRoutes);
+
+module.exports = router;

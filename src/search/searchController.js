@@ -42,4 +42,4 @@ const getSearchResults = async searchQuery => {
   }
 };
 
-module.exports = getSearchResults;
+export { getSearchResults };

@@ -1,6 +1,8 @@
 import searchRoutes from "./searchRoutes";
 import { Router } from "express";
 
-Router.use("/users", searchRoutes);
+const router = Router();
 
-module.exports = Router;
+router.use("/users", searchRoutes);
+
+export default router;

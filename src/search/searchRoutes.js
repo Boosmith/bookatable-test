@@ -1,6 +1,8 @@
 import { Router } from "express";
-import controller from "./searchController";
+import { getSearchResults } from "./searchController";
 
-Router.route("/").get(controller.get);
+const router = Router();
 
-export default Router;
+router.route("/").get(getSearchResults);
+
+export default router;

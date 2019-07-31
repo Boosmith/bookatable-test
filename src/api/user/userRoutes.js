@@ -1,15 +1,12 @@
 import { Router } from "express";
-import controller from "./userController";
+import { params, get, getOne } from "./userController";
 
-Router.param("id", controller.params);
+const router = Router();
 
-Router.route("/")
-  .get(controller.get)
-  .post(controller.post);
+router.param("id", params);
 
-Router.route("/:id")
-  .get(controller.getOne)
-  .put(controller.put)
-  .delete(controller.delete);
+router.route("/").get(get);
 
-export default Router;
+router.route("/:id").get(getOne);
+
+export default router;
