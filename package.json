@@ -4,9 +4,11 @@
   "description": "Example API using Express and MongoDB.",
   "main": "server.js",
   "scripts": {
+    "dev": "NODE_ENV=development npm-run-all server",
     "lint": "eslint ./.",
-    "start": "node bin/www.js",
-    "start-dev": "nodemon bin/www.js --exec 'npm run lint && node'",
+    "server": "babel-node ./src/bin/www.js",
+    "start": "node src/bin/www.js",
+    "start-dev": "nodemon src/bin/www.js --exec 'npm run lint && node'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Andy Smith",

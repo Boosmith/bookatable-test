@@ -1,7 +1,7 @@
 import createError from "http-errors";
 import express from "express";
 import logger from "morgan";
-import api from "./api";
+import api from "./src/api";
 
 const app = express();
 
