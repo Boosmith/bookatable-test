@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const controller = require("./searchController");
+const getSearchResults = require("./searchController");
 
 router.get("/", async (req, res) => {
   console.log(req.query.q);
-  const searchResults = await controller.getSearchResults(req.query.q);
+  const searchResults = await getSearchResults(req.query.q);
   res.send(searchResults);
 });
 
