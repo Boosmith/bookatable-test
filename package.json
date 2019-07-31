@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "lint": "eslint ./.",
-    "start": "node ./bin/www",
-    "start-dev": "nodemon ./bin/www --exec 'npm run lint && node'",
+    "start": "node bin/www.js",
+    "start-dev": "nodemon bin/www.js --exec 'npm run lint && node'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Andy Smith",
@@ -17,7 +17,8 @@
     "express": "^4.17.1",
     "http-errors": "^1.7.3",
     "mongodb": "^3.2.7",
-    "mongoose": "^5.6.7"
+    "mongoose": "^5.6.7",
+    "npm-run-all": "^4.1.5"
   },
   "devDependencies": {
     "debug": "^4.1.1",
