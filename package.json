@@ -4,12 +4,16 @@
   "description": "Example API using Express and MongoDB.",
   "main": "server.js",
   "scripts": {
-    "dev": "NODE_ENV=development npm-run-all server",
-    "lint": "eslint ./.",
+    "build": "babel ./src --out-dir dist",
+    "clean": "rimraf dist",
+    "dev": "NODE_ENV=development npm-run-all lint server",
+    "lint": "eslint ./src",
+    "prod": "NODE_ENV=production npm-run-all clean build server:prod",
     "server": "babel-node ./src/bin/www.js",
-    "start": "node src/bin/www.js",
-    "start-dev": "nodemon src/bin/www.js --exec 'npm run lint && node'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server:prod": "node ./dist/bin/www.js",
+    "start": "npm run prod",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon"
   },
   "author": "Andy Smith",
   "license": "ISC",
