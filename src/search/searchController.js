@@ -2,6 +2,7 @@ const fs = require("fs");
 const readline = require("readline");
 const csv = require("csvtojson");
 const path = require("path");
+const userModel = require("../api/user/userModel");
 
 const getSearchResults = async searchQuery => {
   try {
@@ -32,10 +33,16 @@ const getSearchResults = async searchQuery => {
             result[headers[i]] = dataObj[i];
           }
           searchResults.push(result);
+          userModel.create(result, function(err, docs) {
+            if (err) {
+              console.error(err);
+            }
+          });
         }
       }
+      const jsonResults = JSON.stringify(searchResults);
 
-      return JSON.stringify(searchResults);
+      return jsonResults;
     }
     return JSON.stringify({});
   } catch (error) {
