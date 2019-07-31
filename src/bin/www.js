@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import app from "../app";
-import debug from "debug";
-import http from "http";
+const app = require("../app");
+const debug = require("debug");
+const http = require("http");
 
 debug("express-search-file:server");
 

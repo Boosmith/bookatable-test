@@ -1,8 +1,10 @@
-import { Router } from "express";
-import { getSearchResults } from "./searchController";
+const router = require("express").Router();
+const controller = require("./searchController");
 
-const router = Router();
+router.get("/", async (req, res) => {
+  console.log(req.query.q);
+  const searchResults = await controller.getSearchResults(req.query.q);
+  res.send(searchResults);
+});
 
-router.route("/").get(getSearchResults);
-
-export default router;
+module.exports = router;

@@ -1,10 +1,12 @@
-import createError from "http-errors";
-import express from "express";
-import logger from "morgan";
-import api from "./api";
-import search from "./search";
+const createError = require("http-errors");
+const express = require("express");
+const logger = require("morgan");
+const api = require("./api");
+const search = require("./search");
 
 const app = express();
+
+require("./db");
 
 app.use(logger(process.env.REQUEST_LOG_FORMAT || "dev"));
 app.use(express.json());
@@ -27,4 +29,4 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
 });
 
-export default app;
+module.exports = app;

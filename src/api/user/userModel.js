@@ -1,5 +1,4 @@
-import db from "../../db";
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
   firstName: { type: String, required: true },
@@ -15,9 +14,10 @@ userSchema.virtual("name").get(() => {
 
 userSchema.methods = {
   toJson: () => {
-    const obj = this.toObject();
-    return obj;
+    this.toObject();
   }
 };
 
-export default db.model("User", userSchema);
+const userModel = mongoose.model("User", userSchema);
+
+module.exports = userModel;

@@ -5,7 +5,7 @@ const csv = require("csvtojson");
 const getSearchResults = async searchQuery => {
   try {
     if (searchQuery.length > 2) {
-      const fileName = "data/namesList.csv";
+      const fileName = "../data/namesList.csv";
       // Get headers. This seems to be slowing it down a bit...
       let headers = [];
       await csv()

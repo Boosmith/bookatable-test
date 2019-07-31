@@ -1,7 +1,7 @@
-import User from "./userModel";
+const user = require("./userModel");
 
 const params = (req, res, next, id) => {
-  User.findById(id).then(
+  user.findById(id).then(
     function(user) {
       if (!user) {
         next(new Error("No user with that id"));
@@ -17,7 +17,7 @@ const params = (req, res, next, id) => {
 };
 
 const get = (req, res, next) => {
-  User.find({}).then(
+  user.find({}).then(
     function(users) {
       res.json(
         users.map(function(user) {
@@ -36,4 +36,8 @@ const getOne = (req, res) => {
   res.json(user);
 };
 
-export { params, get, getOne };
+module.exports = {
+  params: params,
+  get: get,
+  getOne: getOne
+};
