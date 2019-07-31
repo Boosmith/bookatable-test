@@ -7,7 +7,7 @@
 
 ### Set up
 
-- This is pretty straightforward to set up.
+- This is straightforward to set up.
 
 1. Clone the repo.
 2. Then `$ cd express-search`
