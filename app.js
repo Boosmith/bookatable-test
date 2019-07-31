@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/api", api);
+app.use("/search", search);
 
 app.use((req, res, next) => {
   next(createError(404));
