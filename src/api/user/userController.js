@@ -21,7 +21,7 @@ const get = (req, res, next) => {
     function(users) {
       res.json(
         users.map(function(user) {
-          return user.toJson();
+          return user;
         })
       );
     },
@@ -32,7 +32,7 @@ const get = (req, res, next) => {
 };
 
 const getOne = (req, res) => {
-  const user = req.user.toJson();
+  const user = req.user;
   res.json(user);
 };
 
