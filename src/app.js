@@ -1,7 +1,9 @@
+const api = require("./api");
+const bodyParser = require("body-parser");
 const createError = require("http-errors");
 const express = require("express");
 const logger = require("morgan");
-const api = require("./api");
+
 const search = require("./search");
 
 const app = express();
@@ -11,6 +13,8 @@ require("./db");
 app.use(logger(process.env.REQUEST_LOG_FORMAT || "dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use("/api", api);
 app.use("/search", search);
