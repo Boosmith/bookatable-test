@@ -10,6 +10,7 @@ router
 
 router
   .route("/:id")
+  .delete(controller.delete)
   .get(controller.getOne)
   .put(controller.put);
 

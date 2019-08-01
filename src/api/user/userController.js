@@ -16,6 +16,17 @@ const params = (req, res, next, id) => {
   );
 };
 
+const del = (req, res, next) => {
+  const user = new User(req.user);
+  user.remove((err, deleted) => {
+    if (err) {
+      next(err);
+    } else {
+      res.json(deleted);
+    }
+  });
+};
+
 const get = (req, res, next) => {
   User.find({}).then(
     function(users) {
@@ -41,7 +52,7 @@ const put = (req, res, next) => {
 
   const update = req.body;
 
-  const updatedUser = new User({ ...user, ...update });
+  const updatedUser = Object.assign(user, update);
 
   updatedUser.save((err, saved) => {
     if (err) {
@@ -65,6 +76,7 @@ const post = (req, res, next) => {
 };
 
 module.exports = {
+  delete: del,
   get: get,
   getOne: getOne,
   params: params,
