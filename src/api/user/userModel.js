@@ -8,7 +8,13 @@ const userSchema = mongoose.Schema({
   postcode: { type: String, required: true }
 });
 
-userSchema.index({ lastName: 1 });
+userSchema.index({
+  firstName: 1,
+  lastName: 1,
+  address: 1,
+  city: 1,
+  postcode: 1
+});
 
 userSchema.virtual("name").get(() => {
   return this.lastName + ", " + this.firstName;
