@@ -36,6 +36,22 @@ const getOne = (req, res) => {
   res.json(user);
 };
 
+const put = (req, res, next) => {
+  const user = req.user;
+
+  const update = req.body;
+
+  const updatedUser = new User({ ...user, ...update });
+
+  updatedUser.save((err, saved) => {
+    if (err) {
+      next(err);
+    } else {
+      res.json(saved);
+    }
+  });
+};
+
 const post = (req, res, next) => {
   const newUser = new User(req.body);
 
@@ -52,5 +68,6 @@ module.exports = {
   get: get,
   getOne: getOne,
   params: params,
+  put: put,
   post: post
 };
