@@ -22,4 +22,4 @@
 ### Usage
 
 Use Postman or your favourite API test tool.
-An example test url is http://localhost:3000/search/users?q=grif which will return all names with `lastName` starting with `grif`.
+An example test url is http://localhost:3000/search/users?q=grif which will return all users with `grif` in one of collections fields.

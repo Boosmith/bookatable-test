@@ -6,7 +6,7 @@ const http = require("http");
 
 debug("express-search-file:server");
 
-const port = normalizePort(process.env.PORT || "3000");
+const port = normalizePort(process.env.PORT || "3010");
 app.set("port", port);
 
 const server = http.createServer(app);

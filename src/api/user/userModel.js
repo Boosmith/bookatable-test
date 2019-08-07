@@ -20,12 +20,6 @@ userSchema.virtual("name").get(() => {
   return this.lastName + ", " + this.firstName;
 });
 
-userSchema.methods = {
-  toJson: () => {
-    this.toObject();
-  }
-};
-
 const userModel = mongoose.model("User", userSchema);
 
 module.exports = userModel;
