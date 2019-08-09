@@ -4,10 +4,30 @@ const createError = require("http-errors");
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+const swaggerJSDoc = require("swagger-jsdoc");
 
 const search = require("./search");
 
 const app = express();
+
+const swaggerDefinition = {
+  info: {
+    title: "Node Swagger API",
+    version: "1.0.0",
+    description: "Demonstrating how to describe a RESTful API with Swagger"
+  },
+  host: "localhost:3000",
+  basePath: "/"
+};
+
+const swaggerOptions = {
+  // import swaggerDefinitions
+  swaggerDefinition: swaggerDefinition,
+  // path to the API docs
+  apis: ["./api/*.js"]
+};
+
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
 require("./db");
 
@@ -17,6 +37,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.get("/api/swagger.json", function(req, res) {
+  res.setHeader("Content-type", "application/json");
+  res.send(swaggerSpec);
+});
 
 app.use("/api", api);
 app.use("/search", search);
