@@ -7,7 +7,7 @@
     "build": "babel ./src --out-dir dist",
     "clean": "rimraf dist",
     "debug": "node --inspect ./src/bin/www.js",
-    "dev": "NODE_ENV=development npm-run-all lint server",
+    "dev": "NODE_ENV=development npm-run-all lint server test",
     "lint": "eslint ./src",
     "postinstall": "npm run requirement-checks",
     "prod": "NODE_ENV=production npm-run-all clean build server:prod",
@@ -15,7 +15,7 @@
     "server": "babel-node ./src/bin/www.js",
     "server:prod": "node ./dist/bin/www.js",
     "start": "npm run prod",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha src/**/*.test.js",
     "watch": "nodemon"
   },
   "author": "Andy Smith",
