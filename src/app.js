@@ -5,6 +5,7 @@ const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 const path = require("path");
 
 const search = require("./search");
@@ -13,19 +14,17 @@ const app = express();
 
 const swaggerDefinition = {
   info: {
-    title: "Node Swagger API",
-    version: "1.0.0",
-    description: "Demonstrating how to describe a RESTful API with Swagger"
+    title: "Trelloid API",
+    version: "0.2.0",
+    description: "Example API for a Kanban board application (WIP)"
   },
-  host: "localhost:3000",
-  basePath: "/"
+  host: "localhost:3010",
+  basePath: "/api"
 };
 
 const swaggerOptions = {
-  // import swaggerDefinitions
   swaggerDefinition: swaggerDefinition,
-  // path to the API docs
-  apis: [path.resolve(__dirname, "api/user/userRoutes.js")]
+  apis: [path.resolve(__dirname, "api/index.js")]
 };
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
@@ -44,6 +43,7 @@ app.get("/api/swagger.json", function(req, res) {
   res.send(swaggerSpec);
 });
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api", api);
 app.use("/search", search);
 

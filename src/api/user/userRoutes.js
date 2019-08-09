@@ -5,20 +5,7 @@ router.param("id", controller.params);
 
 router
   .route("/")
-  /**
- * @swagger
- * /api/users:
- *   get:
- *     tags:
- *       - Users
- *     description: Returns all Users
- *     produces:
- *       - application/json
- *     responses:
- *       200:
- *         description: An array of Users
 
- */
   .get(controller.get)
   .post(controller.post);
 
