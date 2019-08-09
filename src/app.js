@@ -1,33 +1,14 @@
-const api = require("./api");
 const bodyParser = require("body-parser");
 const createError = require("http-errors");
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
-const swaggerJSDoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
-const path = require("path");
 
+const api = require("./api");
 const search = require("./search");
+const { swaggerUi, swaggerSpec } = require("../src/utils/swagger");
 
 const app = express();
-
-const swaggerDefinition = {
-  info: {
-    title: "Trelloid API",
-    version: "0.2.0",
-    description: "Example API for a Kanban board application (WIP)"
-  },
-  host: "localhost:3010",
-  basePath: "/api"
-};
-
-const swaggerOptions = {
-  swaggerDefinition: swaggerDefinition,
-  apis: [path.resolve(__dirname, "api/index.js")]
-};
-
-const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
 require("./db");
 
