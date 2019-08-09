@@ -5,6 +5,7 @@ const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 const swaggerJSDoc = require("swagger-jsdoc");
+const path = require("path");
 
 const search = require("./search");
 
@@ -24,7 +25,7 @@ const swaggerOptions = {
   // import swaggerDefinitions
   swaggerDefinition: swaggerDefinition,
   // path to the API docs
-  apis: ["./api/*.js"]
+  apis: [path.resolve(__dirname, "api/user/userRoutes.js")]
 };
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
