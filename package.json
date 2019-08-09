@@ -15,7 +15,7 @@
     "server": "babel-node ./src/bin/www.js",
     "server:prod": "node ./dist/bin/www.js",
     "start": "npm run prod",
-    "test": "mocha src/**/*.test.js",
+    "test": "mocha test/**/*.test.js",
     "watch": "nodemon"
   },
   "author": "Andy Smith",

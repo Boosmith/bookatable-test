@@ -1,32 +1,20 @@
-const nock = require("nock");
 const chai = require("chai");
 const expect = chai.expect;
-const {
-  defaultOptions,
-  nockBack
-} = require("../../tools/testing/helpers/nock");
-const controller = require("./userController");
+const app = require("../../../src/app");
+const request = require("supertest")(app);
 
-describe("User Controller Tests:", function() {
-  describe("Get:", function() {
-    it("should return users in json response", function() {
-      after(nock.restore);
-      afterEach(nock.cleanAll);
-
-      return nockBack("get-users.json", defaultOptions)
-        .then(function({ nockDone }) {
-          let req = {};
-          let res = {};
-          controller
-            .get(req, res)
-            .then(function(res) {
-              expect(res).to.be.an("object");
-            })
-            .then(nockDone);
-        })
-        .then(function() {
-          nockBack.setMode("wild");
+describe("API Integration Tests:", function() {
+  describe("Users:", function(done) {
+    describe("Get:", function() {
+      it("should return status of 200", function(done) {
+        request.get("/api/users").end(function(err, res) {
+          if (err) {
+            done(err);
+          }
+          expect(res.status).to.equal(200);
+          done();
         });
+      });
     });
   });
 });
