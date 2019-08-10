@@ -7,7 +7,7 @@
     "build": "babel ./src --out-dir dist",
     "clean": "rimraf dist",
     "debug": "node --inspect ./src/bin/www.js",
-    "dev": "NODE_ENV=development npm-run-all lint server",
+    "dev": "NODE_ENV=development npm-run-all lint test",
     "lint": "eslint ./src",
     "postinstall": "npm run requirement-checks",
     "prod": "NODE_ENV=production npm-run-all clean build server:prod",
@@ -15,7 +15,7 @@
     "server": "babel-node ./src/bin/www.js",
     "server:prod": "node ./dist/bin/www.js",
     "start": "npm run prod",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/**/*.test.js",
     "watch": "nodemon"
   },
   "author": "Andy Smith",
@@ -40,6 +40,7 @@
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "@babel/runtime": "^7.5.5",
+    "chai": "^4.2.0",
     "debug": "^4.1.1",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
@@ -49,9 +50,13 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^6.2.0",
     "morgan": "^1.9.1",
+    "nock": "^10.0.6",
     "nodemon": "^1.19.1",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "sinon": "^7.4.1",
+    "supertest": "^4.0.2"
   },
   "engines": {
     "node": ">=11.0.0"
