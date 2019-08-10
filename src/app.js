@@ -1,11 +1,12 @@
-const api = require("./api");
 const bodyParser = require("body-parser");
 const createError = require("http-errors");
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 
+const api = require("./api");
 const search = require("./search");
+const { swaggerUi, swaggerSpec } = require("../src/utils/swagger");
 
 const app = express();
 
@@ -18,6 +19,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get("/api/swagger.json", function(req, res) {
+  res.setHeader("Content-type", "application/json");
+  res.send(swaggerSpec);
+});
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api", api);
 app.use("/search", search);
 
