@@ -13,10 +13,7 @@
 2. Install [Node.js](https://nodejs.org) with a version `>=11.0.0`. This is because the version of
    package `readline` has dependencies on `v11.0` or higher. The package will warn you during installation if the installed version of Node is incompatible.
 
-#### Dependencies
 
-A version of NodeJThis is because the version of
-package `readline` has dependencies on `v11.0` or higher.
 
 ### Installing
 
