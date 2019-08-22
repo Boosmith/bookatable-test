@@ -4,7 +4,7 @@
   "description": "Example API using Express and MongoDB.",
   "main": "server.js",
   "scripts": {
-    "build": "babel-node ./src --out-dir dist",
+    "build": "babel ./src --out-dir dist",
     "clean": "rimraf dist",
     "debug": "node --inspect ./src/bin/www.js",
     "dev": "NODE_ENV=development npm-run-all lint test",
