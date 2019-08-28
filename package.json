@@ -7,7 +7,7 @@
     "build": "babel ./src --out-dir dist",
     "clean": "rimraf dist",
     "debug": "NODE_ENV=development node --inspect ./src/bin/www.js",
-    "dev": "npm-run-all lint server",
+    "dev": "run-p lint server",
     "lint": "eslint ./src",
     "postinstall": "npm run requirement-checks",
     "prod": "NODE_ENV=production npm-run-all clean build server:prod",
