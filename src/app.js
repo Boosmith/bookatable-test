@@ -6,7 +6,7 @@ const cors = require("cors");
 
 const api = require("./api");
 const search = require("./search");
-const { swaggerUi, swaggerSpec } = require("../src/utils/swagger");
+const { swaggerUi, swaggerSpec } = require("./utils/swagger");
 
 const app = express();
 
