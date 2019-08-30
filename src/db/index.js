@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
-const url =
-  process.env.MONGODB_URI || "mongodb://host.docker.internal:27017/trelloid";
+const baseURL = process.env.MONGODB_URI || "mongodb://localhost:27017";
+const url = baseURL + "/trelloid";
+console.log(`url = ${url}\n`);
 
 mongoose
   .set("useNewUrlParser", true)
