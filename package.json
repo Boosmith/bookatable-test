@@ -1,7 +1,7 @@
 {
-  "name": "api-express-mongo",
+  "name": "trelloid-api",
   "version": "0.1.0",
-  "description": "Example API using Express and MongoDB.",
+  "description": "API for Trelloid application",
   "main": "server.js",
   "scripts": {
     "build": "babel ./src --out-dir dist",
