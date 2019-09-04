@@ -1,8 +1,8 @@
-# Express REST API
+# Trelloid API
 
 ### Summary
 
-- Simple Node.js search api using Express.
+- API for Trelloid application
 - Version v0.3.0
 
 ## Getting Started
@@ -12,8 +12,6 @@
 1. Install [MongoDb](https://docs.mongodb.com/manual/installation/)
 2. Install [Node.js](https://nodejs.org) with a version `>=11.0.0`. This is because the version of
    package `readline` has dependencies on `v11.0` or higher. The package will warn you during installation if the installed version of Node is incompatible.
-
-
 
 ### Installing
 

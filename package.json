@@ -1,7 +1,7 @@
 {
-  "name": "api-express-mongo",
+  "name": "trelloid-api",
   "version": "0.1.0",
-  "description": "Example API using Express and MongoDB.",
+  "description": "API for Trelloid application",
   "main": "server.js",
   "scripts": {
     "build": "babel ./src --out-dir dist",
@@ -10,10 +10,10 @@
     "dev": "npm-run-all lint server",
     "lint": "eslint ./src",
     "postinstall": "npm run requirement-checks",
-    "prod": "NODE_ENV=production npm-run-all clean build server:prod",
+    "prod": "npm-run-all clean build server:prod",
     "requirement-checks": "babel-node checkVersion.js",
     "server": "NODE_ENV=development babel-node ./src/bin/www.js",
-    "server:prod": "node ./dist/bin/www.js",
+    "server:prod": "NODE_ENV=production node ./dist/bin/www.js",
     "start": "npm run prod",
     "test": "mocha test/**/*.test.js",
     "watch": "nodemon"
