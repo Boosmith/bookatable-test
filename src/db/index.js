@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const {
-  // MONGO_USERNAME,
-  // MONGO_PASSWORD,
+  MONGO_USERNAME,
+  MONGO_PASSWORD,
   MONGO_PORT,
   MONGO_DB,
   MONGODB_URI
@@ -16,9 +16,10 @@ const options = {
   connectTimeoutMS: 10000
 };
 
-// const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
 const url =
-  MONGODB_URI || `mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}`;
+  MONGODB_URI ||
+  `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+
 console.log(`url = ${url}\n`);
 
 mongoose

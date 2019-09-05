@@ -15,16 +15,17 @@ services:
       - MONGO_HOSTNAME=db
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
+      - NODE_ENV=production
     ports:
-      - "80:8080"
+      - "3030:8080"
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
     networks:
       - app-network
-    command: ./docker-wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon src/bin/www.js
+    command: node ./bin/www.js
   db:
-    image: mongo:4.1.8-xenial
+    image: mongo
     container_name: db
     restart: unless-stopped
     env_file: .env
