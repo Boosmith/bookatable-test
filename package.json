@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel ./src --out-dir dist",
     "clean": "rimraf dist",
-    "debug": "NODE_ENV=development node --inspect ./src/bin/www.js",
+    "debug": "NODE_ENV=production node --inspect ./dist/bin/www.js",
     "dev": "npm-run-all lint server",
     "lint": "eslint ./src",
     "postinstall": "npm run requirement-checks",
