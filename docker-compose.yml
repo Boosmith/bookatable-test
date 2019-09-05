@@ -15,7 +15,7 @@ services:
       - MONGO_HOSTNAME=db
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
-      - NODE_ENV=production
+      - NODE_ENV=$NODE_ENV
     ports:
       - "3030:8080"
     volumes:
