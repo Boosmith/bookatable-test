@@ -1,22 +1,33 @@
 const mongoose = require("mongoose");
+const {
+  MONGO_USERNAME,
+  MONGO_PASSWORD,
+  MONGO_HOSTNAME,
+  MONGO_PORT,
+  MONGO_DB
+} = process.env;
 
-const baseURL = process.env.MONGODB_URI || "mongodb://localhost:27017";
-const url = baseURL + "/trelloid";
+const options = {
+  useNewUrlParser: true,
+  reconnectTries: Number.MAX_VALUE,
+  reconnectInterval: 500,
+  connectTimeoutMS: 10000
+};
+
+const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+
 console.log(`url = ${url}\n`);
 
 mongoose
-  .set("useNewUrlParser", true)
   .set("useFindAndModify", false)
   .set("useCreateIndex", true)
-  .connect(url, err => {
-    if (err) {
-      console.log("Error in connection");
-      throw err;
-    } else {
-      console.log("connected");
-    }
+  .connect(url, options)
+  .then(function() {
+    console.log("MongoDB is connected");
   })
-  .then();
+  .catch(function(err) {
+    console.log(err);
+  });
 
 const db = mongoose.connection;
 module.exports = db;
