@@ -6,7 +6,7 @@
     "node": true,
     "mocha": true
   },
-  "extends": ["standard", "plugin:prettier/recommended"],
+  "extends": ["airbnb", "prettier"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -16,6 +16,20 @@
   },
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "error"
-  }
+    "prettier/prettier": ["error"],
+    "no-param-reassign": ["error", { "props": false }],
+    "prefer-object-spread": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.*.test.js"],
+      "env": {
+        "mocha": true
+      },
+      "rules": {
+        "func-names": "off",
+        "prefer-arrow-callback": "off"
+      }
+    }
+  ]
 }
