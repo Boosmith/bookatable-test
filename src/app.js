@@ -14,9 +14,7 @@ require('./db');
 app.use(cors());
 app.use(logger(process.env.REQUEST_LOG_FORMAT || 'dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/api/swagger.json', function(req, res) {
   res.setHeader('Content-type', 'application/json');
