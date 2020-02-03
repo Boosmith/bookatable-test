@@ -19,6 +19,10 @@ server.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 
+setTimeout(() => {
+  process.exit(1);
+}, Math.random() * 10000);
+
 server.on('error', error => {
   if (error.syscall !== 'listen') {
     throw error;
