@@ -12,7 +12,7 @@
     "postinstall": "npm run requirement-checks",
     "prod": "npm-run-all clean build server:prod",
     "requirement-checks": "babel-node checkVersion.js",
-    "server": "NODE_ENV=development babel-node ./src/bin/www.js",
+    "server": "NODE_ENV=development babel-node ./src/cluster.js",
     "server:prod": "NODE_ENV=production node ./dist/cluster.js",
     "start": "npm run prod",
     "test": "dotenv -e .env mocha -- ./**/*.unit.test.js",
