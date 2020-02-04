@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
   firstName: { type: String, required: true },
@@ -16,10 +16,10 @@ userSchema.index({
   postcode: 1
 });
 
-userSchema.virtual("name").get(() => {
-  return this.lastName + ", " + this.firstName;
+userSchema.virtual('name').get(() => {
+  return `${this.lastName}, ${this.firstName}`;
 });
 
-const userModel = mongoose.model("User", userSchema);
+const userModel = mongoose.model('User', userSchema);
 
 module.exports = userModel;
