@@ -1,15 +1,11 @@
 /* eslint-disable global-require */
 const cluster = require('cluster');
-// const os = require('os');
+const os = require('os');
 
 if (cluster.isMaster) {
   console.log(`Master pid: ${process.pid}`);
-  // const cpus = os.cpus();
-  // cpus.forEach(() => cluster.fork());
-  cluster.fork();
-  cluster.fork();
-  cluster.fork();
-  cluster.fork();
+  const cpus = os.cpus();
+  cpus.forEach(() => cluster.fork());
 
   cluster.on('exit', (worker, code) => {
     if (code !== 0 && !worker.exitedAfterDisconnect) {
