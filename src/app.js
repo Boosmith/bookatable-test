@@ -2,6 +2,7 @@ const createError = require('http-errors');
 const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
+const helmet = require('helmet');
 
 const api = require('./api');
 const search = require('./search');
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(logger(process.env.REQUEST_LOG_FORMAT || 'dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(helmet());
 
 app.get('/api/swagger.json', function(req, res) {
   res.setHeader('Content-type', 'application/json');
