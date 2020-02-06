@@ -76,5 +76,16 @@
   },
   "engines": {
     "node": ">=11.0.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Boosmith/trelloid-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Boosmith/trelloid-api/issues"
+  },
+  "homepage": "https://github.com/Boosmith/trelloid-api#readme"
 }
