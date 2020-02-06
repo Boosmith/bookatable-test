@@ -1,6 +1,6 @@
-const userRoutes = require("./user/userRoutes");
-const authRoutes = require("./auth/authRoutes");
-const express = require("express");
+const express = require('express');
+const userRoutes = require('./user/userRoutes');
+const authRoutes = require('./auth/authRoutes');
 
 const router = express.Router();
 /**
@@ -17,7 +17,7 @@ const router = express.Router();
  *         description: An array of Users
 
  */
-router.use("/users", userRoutes);
-router.use("/auth", authRoutes);
+router.use('/users', userRoutes);
+router.use('/auth', authRoutes);
 
 module.exports = router;
