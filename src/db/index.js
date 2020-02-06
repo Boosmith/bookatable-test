@@ -1,17 +1,20 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const url = process.env.MONGODB_URI || "mongodb://localhost:27017/trelloid";
+const baseURL = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+const url = `${baseURL}/trelloid`;
+console.log(`url = ${url}\n`);
 
 mongoose
-  .set("useNewUrlParser", true)
-  .set("useFindAndModify", false)
-  .set("useCreateIndex", true)
+  .set('useNewUrlParser', true)
+  .set('useFindAndModify', false)
+  .set('useCreateIndex', true)
+  .set('useUnifiedTopology', true)
   .connect(url, err => {
     if (err) {
-      console.log("Error in connection");
+      console.log('Error in connection');
       throw err;
     } else {
-      console.log("connected");
+      console.log('connected');
     }
   })
   .then();

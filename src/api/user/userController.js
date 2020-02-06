@@ -1,10 +1,10 @@
-const User = require("./userModel");
+const User = require('./userModel');
 
 const params = (req, res, next, id) => {
   User.findById(id).then(
     function(user) {
       if (!user) {
-        next(new Error("No user with that id"));
+        next(new Error('No user with that id'));
       } else {
         req.user = user;
         next();
@@ -43,12 +43,12 @@ const get = (req, res, next) => {
 };
 
 const getOne = (req, res) => {
-  const user = req.user;
+  const { user } = req;
   res.json(user);
 };
 
 const put = (req, res, next) => {
-  const user = req.user;
+  const { user } = req;
 
   const update = req.body;
 
@@ -68,7 +68,7 @@ const post = (req, res, next) => {
 
   newUser.save(function(err, saved) {
     if (err) {
-      return next(err);
+      next(err);
     } else {
       res.json(saved);
     }
@@ -77,9 +77,9 @@ const post = (req, res, next) => {
 
 module.exports = {
   delete: del,
-  get: get,
-  getOne: getOne,
-  params: params,
-  put: put,
-  post: post
+  get,
+  getOne,
+  params,
+  put,
+  post
 };

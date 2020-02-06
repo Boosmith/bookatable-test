@@ -1,16 +1,16 @@
-const router = require("express").Router();
-const controller = require("./userController");
+const router = require('express').Router();
+const controller = require('./userController');
 
-router.param("id", controller.params);
+router.param('id', controller.params);
 
 router
-  .route("/")
+  .route('/')
 
   .get(controller.get)
   .post(controller.post);
 
 router
-  .route("/:id")
+  .route('/:id')
   .delete(controller.delete)
   .get(controller.getOne)
   .put(controller.put);

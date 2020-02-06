@@ -1,7 +1,7 @@
-const userModel = require("../api/user/userModel");
+const userModel = require('../api/user/userModel');
 
 const getSearchResults = async searchQuery => {
-  const re = new RegExp(searchQuery, "i");
+  const re = new RegExp(searchQuery, 'i');
   const results = await userModel.find({
     $or: [
       { firstName: re },

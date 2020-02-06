@@ -6,7 +6,7 @@
     "node": true,
     "mocha": true
   },
-  "extends": ["standard", "plugin:prettier/recommended"],
+  "extends": ["airbnb-base", "prettier"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -16,6 +16,24 @@
   },
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "error"
-  }
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "func-names": "off",
+    "import/no-extraneous-dependencies": "off",
+    "no-console": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "prefer-object-spread": "off",
+    "prettier/prettier": ["error"]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.*.test.js"],
+      "env": {
+        "mocha": true
+      },
+      "rules": {
+        "func-names": "off",
+        "prefer-arrow-callback": "off"
+      }
+    }
+  ]
 }
