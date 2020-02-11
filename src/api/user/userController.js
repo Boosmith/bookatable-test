@@ -1,3 +1,4 @@
+const { createHash } = require('../../encryption');
 const User = require('./userModel');
 
 const params = (req, res, next, id) => {
@@ -64,15 +65,20 @@ const put = (req, res, next) => {
 };
 
 const post = (req, res, next) => {
-  const newUser = new User(req.body);
+  let newUser = new User(req.body);
+  const { password } = newUser;
+  const callback = (hash, salt) => {
+    newUser = Object.assign(newUser, { hash, salt });
+    newUser.save(function(err, saved) {
+      if (err) {
+        next(err);
+      } else {
+        res.json(saved);
+      }
+    });
+  };
 
-  newUser.save(function(err, saved) {
-    if (err) {
-      next(err);
-    } else {
-      res.json(saved);
-    }
-  });
+  createHash(password, callback);
 };
 
 module.exports = {
