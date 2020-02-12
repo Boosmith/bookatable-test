@@ -14,21 +14,10 @@ function login(req, res) {
     if (err || !existingUser) {
       return loginError(res);
     }
-    function callback(error, isValid) {
-      console.log('callback');
-      if (!isValid || error) {
-        console.log(`err = ${error}`);
-        return loginError(res);
-      }
-      return res.json(existingUser);
-    }
 
-    return verifyPassword(
-      password,
-      existingUser.password,
-      existingUser.salt,
-      callback
-    );
+    return verifyPassword(password, existingUser.password, existingUser.salt)
+      .then(isValid => (isValid ? res.json(existingUser) : loginError(res)))
+      .catch(() => loginError(res));
   });
 }
 

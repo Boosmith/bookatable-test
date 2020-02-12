@@ -12,20 +12,16 @@ async function createHash(password) {
   return { hash: hash.toString('hex'), salt };
 }
 
-function verifyPassword(candidatePassword, storedPassword, salt, callback) {
-  crypto.pbkdf2(
+async function verifyPassword(candidatePassword, storedPassword, salt) {
+  const hashBuffer = await pbkdf2(
     candidatePassword,
     salt,
     100000,
     512,
-    'sha512',
-    (error, hash) => {
-      if (error) throw error;
-      const isValid = hash.toString('hex') === storedPassword;
-      console.log(`isValid = ${isValid}`);
-      return callback(null, isValid);
-    }
+    'sha512'
   );
+  const hash = hashBuffer.toString('hex');
+  return hash === storedPassword;
 }
 
 module.exports = { createHash, verifyPassword };
