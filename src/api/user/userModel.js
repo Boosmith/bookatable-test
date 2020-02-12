@@ -9,16 +9,7 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true, select: false },
   salt: { type: String, select: false },
   postcode: { type: String, required: true },
-  userName: { type: String, required: true }
-});
-
-userSchema.index({
-  firstName: 1,
-  lastName: 1,
-  address: 1,
-  city: 1,
-  postcode: 1,
-  userName: 1
+  userName: { type: String, required: true, index: true, unique: true }
 });
 
 userSchema.pre('save', function(next) {

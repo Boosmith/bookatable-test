@@ -1,4 +1,4 @@
-const createError = require('http-errors');
+// const createError = require('http-errors');
 const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
@@ -27,15 +27,10 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api', api);
 app.use('/search', search);
 
-app.use((req, res, next) => {
-  next(createError(404));
-});
-
-// error handler
 app.use((err, req, res) => {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-  res.status(err.status || 500);
+  console.log(err);
+  res.status(err.statusCode);
+  res.json(err.message);
 });
 
 module.exports = app;
