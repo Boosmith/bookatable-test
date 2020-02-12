@@ -14,15 +14,18 @@ const userSchema = mongoose.Schema({
 
 userSchema.pre('save', function(next) {
   const user = this;
-  function callback(hash, salt) {
-    user.password = hash;
-    user.salt = salt;
-    next();
-  }
+
   if (user.password && !user.isModified('password')) {
     next();
   } else {
-    createHash(user.password, callback);
+    createHash(user.password)
+      .then(result => {
+        const { hash, salt } = result;
+        user.password = hash;
+        user.salt = salt;
+        return next();
+      })
+      .catch(error => next(error));
   }
 });
 

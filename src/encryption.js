@@ -1,14 +1,15 @@
 const crypto = require('crypto');
+const util = require('util');
 
-function createHash(password, callback) {
-  crypto.randomBytes(256, (err, buffer) => {
-    if (err) throw err;
-    const salt = buffer.toString('hex');
-    crypto.pbkdf2(password, salt, 100000, 512, 'sha512', (error, hash) => {
-      if (error) throw error;
-      return callback(hash.toString('hex'), salt);
-    });
-  });
+const randomBytes = util.promisify(crypto.randomBytes);
+
+const pbkdf2 = util.promisify(crypto.pbkdf2);
+
+async function createHash(password) {
+  const saltBuffer = await randomBytes(256);
+  const salt = saltBuffer.toString('hex');
+  const hash = await pbkdf2(password, salt, 100000, 512, 'sha512');
+  return { hash: hash.toString('hex'), salt };
 }
 
 function verifyPassword(candidatePassword, storedPassword, salt, callback) {
