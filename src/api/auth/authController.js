@@ -1,4 +1,5 @@
 const User = require('../user/userModel');
+const { generateToken, setJWTCookie } = require('../../authentication');
 const { verifyPassword } = require('../../encryption');
 
 function loginError(res) {
@@ -14,9 +15,10 @@ function login(req, res) {
     if (err || !existingUser) {
       return loginError(res);
     }
-
     return verifyPassword(password, existingUser.password, existingUser.salt)
-      .then(isValid => (isValid ? res.json(existingUser) : loginError(res)))
+      .then(isValid => (isValid ? true : loginError(res)))
+      .then(() => generateToken(userName))
+      .then(token => setJWTCookie(res, 'token', token, 1000000))
       .catch(() => loginError(res));
   });
 }
